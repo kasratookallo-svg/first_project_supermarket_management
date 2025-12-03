@@ -23,6 +23,7 @@ def reset():
     brand.set("")
     quantity.set(0)
     price.set(0)
+    #date.set(str(date.today()))
 
     status, product_list = ProductController.find_all()
 
@@ -40,6 +41,7 @@ def select_product(event):
     brand.set(product[2])
     quantity.set(product[3])
     price.set(product[4])
+    #date.set(product[5])
 #-----------------------------------------------------------------------------------------------
 # Entry based on second approach (Function_handling)
 def receive_product():
@@ -49,6 +51,7 @@ def receive_product():
                                               brand.get(),
                                               quantity.get(),
                                               price.get()
+                                              #date.get()
                                               )
         product_list.append(product)
         print(product, "Product saved successfully.")
@@ -62,7 +65,7 @@ def receive_product():
         messagebox.showinfo("Information Saved", "Product saved successfully.")
         print("Your Market includes : ", product_list)
         print("-" * 150)
-        reset()
+        #reset()
     except Exception as e:
         messagebox.showerror("Error", f"Something went wrong : {e}")
 #-----------------------------------------------------------------------------------------------
@@ -116,36 +119,40 @@ def total_price():
 
 
 win = Tk()
-win.geometry("650x360")
+win.geometry("750x360")
 win.title("Super Market _ List of Products")
 win.configure(bg="green")
 
 
 Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20)
 Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60)
-Label(win, text="brand\n>3",background="grey", fg="white").place(x=20, y=100)
-Label(win, text="quantity\nتعداد",background="grey", fg="white").place(x=20, y=140)
-Label(win, text="price\nتومان",background="grey", fg="white").place(x=20, y=180)
+Label(win, text="Brand\n>3",background="grey", fg="white").place(x=20, y=100)
+Label(win, text="Quantity\nتعداد",background="grey", fg="white").place(x=20, y=140)
+Label(win, text="Price\nتومان",background="grey", fg="white").place(x=20, y=180)
+Label(win , text="Date",background="grey", fg="white").place(x=20, y=220)
 
 id = IntVar()
 name = StringVar()
 brand = StringVar()
 quantity = IntVar()
 price = DoubleVar()
+submit_date = StringVar()
 
 Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90, y=20)
 Entry(win, textvariable=name, width=22,background="grey" , fg="white").place(x=90, y=60)
 Entry(win, textvariable=brand, width=22,background="grey" , fg="white").place(x=90, y=100)
 Entry(win, textvariable=quantity, width=22,background="grey" , fg="white").place(x=90, y=140)
 Entry(win, textvariable=price, width=22,background="grey" , fg="white").place(x=90, y=180)
+Entry(win, textvariable=date , width=22,background="grey" , fg="white").place(x=90, y=220)
 
-Button(win, text="Save to List", width=10, command=receive_product, background="grey").place(x=20, y=230)
-Button(win, text="Edit Database", width=10, command=edit_click , background="lightblue").place(x=20, y=280)
-Button(win, text="Remove from Database", width=16, command=remove_click , background="lightblue").place(x=110, y=280)
-Button(win, text="Total Price List", width=16, command=total_price , background="grey").place(x=110, y=230)
-Button(win,text="Save to Database", width=29, command=save_click, background="lightblue").place(x=20, y=320)
+Button(win, text="Save to List", width=10, command=receive_product, background="grey").place(x=20, y=260)
+Button(win, text="Total Price List", width=17, command=total_price , background="grey").place(x=100, y=260)
 
-table = ttk.Treeview(win, height=12, columns=["Id", "Name", "Brand", "Quantity", "Price"],
+Button(win, text="Edit Database", width=10, command=edit_click , background="lightblue").place(x=20, y=295)
+Button(win, text="Remove from Database", width=17, command=remove_click , background="lightblue").place(x=100, y=295)
+Button(win,text="Save to Database", width=29, command=save_click, background="lightblue").place(x=20, y=325)
+
+table = ttk.Treeview(win, height=12, columns=["Id", "Name", "Brand", "Quantity", "Price" , "Date"],
                      show="headings")
 
 table.column("Id", width=60)
@@ -153,12 +160,14 @@ table.column("Name", width=100)
 table.column("Brand", width=100)
 table.column("Quantity", width=60)
 table.column("Price" , width=60)
+table.column("Date", width=100 )
 
 table.heading("Id", text="Id" )
 table.heading("Name", text="Name")
 table.heading("Brand", text="Brand")
 table.heading("Quantity", text="Quantity")
 table.heading("Price", text="Price")
+table.heading("Date", text="Date")
 
 table.place(x=250, y=20 ,height=327)
 table.bind("<<TreeviewSelect>>", select_product)

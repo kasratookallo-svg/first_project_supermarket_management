@@ -7,6 +7,8 @@
 #----------------------------------------------------------------------
 
 import re
+from datetime import date,datetime
+
 
 product_list = []
 
@@ -83,19 +85,22 @@ def quantity_validator(quantity):
     else:
         raise ValueError("Quantity must be a positive number")
 
-def creat_products_and_validate(id ,name , brand , quantity , price ):
+def creat_products_and_validate(id ,name , brand , quantity , price): #, date):
     id_validator(id)
     name_validator(name)
     brand_validator(brand)
     quantity_validator(quantity)
     price_validator(price)
+    #date = datetime.strptime(date, "%Y-%m-%d").date()
+
 
     product = {
         "id_number": id,
         "name": name,
         "brand": brand,
         "quantity": quantity,
-        "price": price}
+        "price": price }
+        #"date": date}
 
     return product
 #--------------------------------------------------------------------------
