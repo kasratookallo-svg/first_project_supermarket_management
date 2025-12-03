@@ -5,12 +5,15 @@
 #----------------------------------------------------------------------
 # This program relies on two main approach simultaneously, including Class_Method (Object_Oriented programming) and Function_handling.
 #----------------------------------------------------------------------
+from persiantools.digits import to_word
 
 from supermarket_controller import *
 from supermarket_model import *
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+import persiantools
+
 
 product_list = []
 
@@ -106,13 +109,14 @@ def remove_click():
 # total_price function attached to supermarket_module
 def total_price():
     try:
-        messagebox.showinfo("Total Price", f"Total : {calculate_total(product_list)}")
+        total = calculate_total(product_list)
+        messagebox.showinfo("Total Price", f"Total Price: {total}\n{to_word(total)}\tتومان")
     except Exception as e:
         messagebox.showerror("Error", f"Error!!! : {e}")
 
 
 win = Tk()
-win.geometry("650x350")
+win.geometry("650x360")
 win.title("Super Market _ List of Products")
 win.configure(bg="green")
 
@@ -120,8 +124,8 @@ win.configure(bg="green")
 Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20)
 Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60)
 Label(win, text="brand\n>3",background="grey", fg="white").place(x=20, y=100)
-Label(win, text="quantity\n>0",background="grey", fg="white").place(x=20, y=140)
-Label(win, text="price\n>0",background="grey", fg="white").place(x=20, y=180)
+Label(win, text="quantity\nتعداد",background="grey", fg="white").place(x=20, y=140)
+Label(win, text="price\nتومان",background="grey", fg="white").place(x=20, y=180)
 
 id = IntVar()
 name = StringVar()
@@ -135,10 +139,10 @@ Entry(win, textvariable=brand, width=22,background="grey" , fg="white").place(x=
 Entry(win, textvariable=quantity, width=22,background="grey" , fg="white").place(x=90, y=140)
 Entry(win, textvariable=price, width=22,background="grey" , fg="white").place(x=90, y=180)
 
-Button(win, text="Save", width=10, command=receive_product, background="blue").place(x=20, y=230)
-Button(win, text="Edit", width=10, command=edit_click , background="yellow").place(x=150, y=230)
-Button(win, text="Remove", width=10, command=remove_click , background="red").place(x=20, y=280)
-Button(win, text="Total Price", width=10, command=total_price , background="grey").place(x=150, y=280)
+Button(win, text="Save to List", width=10, command=receive_product, background="grey").place(x=20, y=230)
+Button(win, text="Edit Database", width=10, command=edit_click , background="lightblue").place(x=20, y=280)
+Button(win, text="Remove from Database", width=16, command=remove_click , background="lightblue").place(x=110, y=280)
+Button(win, text="Total Price List", width=16, command=total_price , background="grey").place(x=110, y=230)
 Button(win,text="Save to Database", width=29, command=save_click, background="lightblue").place(x=20, y=320)
 
 table = ttk.Treeview(win, height=12, columns=["Id", "Name", "Brand", "Quantity", "Price"],
@@ -148,7 +152,7 @@ table.column("Id", width=60)
 table.column("Name", width=100)
 table.column("Brand", width=100)
 table.column("Quantity", width=60)
-table.column("Price", width=60)
+table.column("Price" , width=60)
 
 table.heading("Id", text="Id" )
 table.heading("Name", text="Name")
@@ -156,7 +160,7 @@ table.heading("Brand", text="Brand")
 table.heading("Quantity", text="Quantity")
 table.heading("Price", text="Price")
 
-table.place(x=250, y=20 ,height=290)
+table.place(x=250, y=20 ,height=327)
 table.bind("<<TreeviewSelect>>", select_product)
 
 
