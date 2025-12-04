@@ -10,7 +10,13 @@
 #                   while
 #                   List_Features, including Submit and Total Price List through Window,
 #                   are based on Function_method (2nd approach).
-
+#----------------------------------------------------------------------
+# Finally, please read the following structions before running the perogram.
+# In List_Features there are two groups of Buttons in Window (tkinter):
+# The first group is Add to list and Total Price List.
+# The second group is Database_Related Buttons, including Submit, Edit , Remove to/from Database.
+# These two groups work independantly.
+#----------------------------------------------------------------------
 
 from persiantools.digits import to_word
 from supermarket_controller import *
@@ -131,24 +137,32 @@ win.configure(bg="green")
 
 
 Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20)
-Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60)
-Label(win, text="Brand\n>3",background="grey", fg="white").place(x=20, y=100)
-Label(win, text="Quantity\nتعداد",background="grey", fg="white").place(x=20, y=140)
-Label(win, text="Price\nتومان",background="grey", fg="white").place(x=20, y=180)
-Label(win , text="Date",background="grey", fg="white").place(x=20, y=220)
-
 id = IntVar()
-name = StringVar()
-brand = StringVar()
-quantity = IntVar()
-price = DoubleVar()
-date = StringVar()
-
 Entry(win, textvariable=id , width=22,background="grey" , fg="white").place(x=90, y=20)
+
+
+Label(win, text="Name\n>3",background="grey", fg="white").place(x=20, y=60)
+name = StringVar()
 Entry(win, textvariable=name, width=22,background="grey" , fg="white").place(x=90, y=60)
+
+
+Label(win, text="Brand\n>3",background="grey", fg="white").place(x=20, y=100)
+brand = StringVar()
 Entry(win, textvariable=brand, width=22,background="grey" , fg="white").place(x=90, y=100)
+
+
+Label(win, text="Quantity\nتعداد",background="grey", fg="white").place(x=20, y=140)
+quantity = IntVar()
 Entry(win, textvariable=quantity, width=22,background="grey" , fg="white").place(x=90, y=140)
+
+
+Label(win, text="Price\nتومان",background="grey", fg="white").place(x=20, y=180)
+price = DoubleVar()
 Entry(win, textvariable=price, width=22,background="grey" , fg="white").place(x=90, y=180)
+
+
+Label(win , text="Date",background="grey", fg="white").place(x=20, y=220)
+date = StringVar()
 Entry(win, textvariable=date , width=22,background="grey" , fg="white").place(x=90, y=220)
 
 Button(win, text="Add to List", width=10, command=receive_product, background="grey").place(x=20, y=260)
