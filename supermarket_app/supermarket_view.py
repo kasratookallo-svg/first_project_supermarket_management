@@ -31,7 +31,7 @@ from tkinter import messagebox
 import persiantools
 
 
-product_list = []
+
 #                                                    Table reseting
 def reset():
     id.set(0)
