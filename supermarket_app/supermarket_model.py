@@ -42,10 +42,10 @@ class Product:
         if not (type(self.id ) == int and self.id > 0):
             raise NameError("Invalid product ID")
 
-        if not re.match(r"^[a-zA-Z\s]{3,30}$", self.name):
+        if not re.match(r"^[a-zA-Z0-9\s]{3,30}$", self.name):
             raise NameError("Invalid name!")
 
-        if not re.match(r"^[a-zA-Z\s]{3,30}$", self.brand):
+        if not re.match(r"^[a-zA-Z0-9\s]{3,30}$", self.brand):
             raise NameError("Invalid brand!")
 
         if not (type(self.quantity) == int and self.quantity > 0):
@@ -74,7 +74,7 @@ class Product:
 
 #--------------------------------------------------------------------------------------------------
 #                                          Second appproach : Function_handling
-# This approach does not require date while is well_designed for calculating Total_price.
+# This approach does not require date while being well_designed for calculating Total_price.
 
 def id_validator(id):
     if (type(id) == int and id > 0):
@@ -83,13 +83,13 @@ def id_validator(id):
         return ValueError("ID Must Be positive number!")
 
 def name_validator(name):
-    if re.match(r"^[a-zA-Z\s]{2,20}$", name):
+    if re.match(r"^[a-zA-Z0-9\s]{2,20}$", name):
         return name
     else:
         raise ValueError("Name must be a string")
 
 def brand_validator(brand):
-    if re.match(r"^[a-zA-Z\s]{2,20}$", brand):
+    if re.match(r"^[a-zA-Z0-9\s]{2,20}$", brand):
         return brand
     else:
         raise ValueError("Brand must be a string")
