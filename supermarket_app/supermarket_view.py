@@ -39,7 +39,7 @@ def reset():
     brand.set("")
     quantity.set(0)
     price.set(0)
-    date.set("2025")
+    date.set("2025-12-")
     status, product_list = ProductController.find_all()
 
     #for item in table.get_children():
@@ -138,7 +138,7 @@ def total_price():
 
 
 win = Tk()
-win.geometry("750x600")
+win.geometry("750x630")
 win.title("Welcome to Super Market _ List of Products")
 win.configure(bg="green")
 
@@ -150,13 +150,13 @@ Label(win , text="Note : This window has 5 buttons which are paired in group of 
       background="yellow", fg="black").place(x=20, y=360,width=505, height=80)
 
 Label(win , text="Fact.\n\n\n<<<<Please Pay Attention>>>>"
-                 "\n\n\nIf you do not"
-                 "\nclick on the 'Submit' button,"
-                 "\nyour product"
-                 "\nis no longer available in Database."
-                 "\nWhich means"
-                 "\nafter closing the program,"
-                 "\nyour data will be lost.",background="red").place(x=530, y=360, height=230 ,width=205)
+                 "\n\n\nYou should "
+                 "\nclick on 'Submit to Database' button,"
+                 "\notherwise,"
+                 "\nyour product's detail"
+                 "\nwill be deleted automatically,"
+                 "\nafter closing the program."
+                 "\n!!!!",background="red").place(x=530, y=360, height=257 ,width=205)
 
 Label(win, text="Instruction : "
                 "\n1- Enter your product's detail."
@@ -165,8 +165,11 @@ Label(win, text="Instruction : "
                 "\n4- Select your products case_by_case from the table in which you want to 'Submit to Database'."
                 "\n5- Enter Date of Submission for your future reference before clicking on 'Submit to Database'."
                 "\n6- Click 'Submit to Database' button to make a list in Database."
-                "\n7- 'Edit' option only works with product's id which means if you want to change the id,\nyou have to 'Add to List' at first, and then submit a new product.",
-      background="yellow", fg="black").place(x=20, y=450 ,width=505, height=140)
+                "\n7- 'Edit' option only works with product's id, which means if you want to change the id,"
+                "\nyou have to 'Remove' previous unwanted Id at first,"
+                "\nand then 'Add to List' new product with a new Id."
+                "\nFinally, remember to 'Submit to Database' your new product.",
+      background="yellow", fg="black").place(x=20, y=450 ,width=505, height=167)
 
 Label(win, text="Id\n>0" ,background="grey" , fg="white").place(x=20, y=20,width=70 ,height=29)
 id = IntVar()
