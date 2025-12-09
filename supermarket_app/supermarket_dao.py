@@ -22,6 +22,7 @@
 import sqlite3
 
 #                                             Database_related Functions
+# Database Existence
 with sqlite3.connect("supermarket_db") as connection:
     cursor = connection.cursor()
 
@@ -38,7 +39,9 @@ with sqlite3.connect("supermarket_db") as connection:
 
     connection.commit()
 print("Database and table created successfully.")
+
 class ProductDataAccess:
+
     def save(self, product):
         with  sqlite3.connect("supermarket_db") as connection:
             cursor = connection.cursor()
