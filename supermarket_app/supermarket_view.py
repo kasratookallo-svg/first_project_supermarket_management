@@ -39,7 +39,8 @@ def reset():
     brand.set("")
     quantity.set(0)
     price.set(0)
-    date.set("2025-12-")
+    today = datetime.now().date()
+    date.set(str(today))
     status, product_list = ProductController.find_all()
 
     #for item in table.get_children():

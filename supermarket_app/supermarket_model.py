@@ -43,19 +43,24 @@ class Product:
             raise NameError("Invalid product ID")
 
         if not re.match(r"^[a-zA-Z0-9\s]{3,30}$", self.name):
-            raise NameError("Invalid name!")
+            return False, "Invalid name!"
 
         if not re.match(r"^[a-zA-Z0-9\s]{3,30}$", self.brand):
-            raise NameError("Invalid brand!")
+            return False, "Invalid brand!"
 
         if not (type(self.quantity) == int and self.quantity > 0):
-            raise NameError("Invalid quantity!")
+            return False, "Invalid quantity!"
 
         if not (type(self.price) == float and self.price > 0):
-            raise NameError("Invalid price!")
+            return False, "Invalid price!"
 
-        if not self.date >= datetime.today().date():
-            raise NameError("Invalid expiration date!")
+        try:
+            date = datetime.strptime(self.date, "%Y-%m-%d")
+        except ValueError:
+            return False, "Invalid Enroll Date (YYYY-MM-DD)"
+        today = datetime.now().date()
+        if not date() >= today:
+            return False, "Enroll Date cannot be in the past"
 
         return True
 
