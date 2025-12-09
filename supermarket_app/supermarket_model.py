@@ -59,7 +59,7 @@ class Product:
         except ValueError:
             return False, "Invalid Enroll Date (YYYY-MM-DD)"
         today = datetime.now().date()
-        if not date() >= today:
+        if not self.date() >= today:
             return False, "Enroll Date cannot be in the past"
 
         return True
