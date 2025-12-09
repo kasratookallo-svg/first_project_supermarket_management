@@ -7,10 +7,10 @@
 #--------------------------------------------------------------------------------------------------
 # Description : This program relies on two main approach simultaneously, such as Class_Method (Object_Oriented programming) and Function_handling.
 #--------------------------------------------------------------------------------------------------
-# Additional hint : Database is recalling Class_method (1st approach) (Date required)
+# Additional hint : Database is recalling Class_method (1st approach) 
 #                   while
 #                   List_Features, including Submit and Total Price_List through Window,
-#                   are based on Function_method (2nd approach) (Date free).
+#                   are based on Function_method (2nd approach) .
 #--------------------------------------------------------------------------------------------------
 # Finally, please read the following structions before running the perogram.
 # In List_Features there are two groups of Buttons in Window (tkinter):
@@ -60,7 +60,7 @@ def select_product(event):
     date.set(product[5])
 #-----------------------------------------------------------------------------------------------
 # Entry for Add_to_List and Total price_list based on second approach (Function_handling)
-# Second approach is wll_designed for calculating total price which does not require date.
+# Second approach is wll_designed for calculating total price.
 #--------------------------------------------------------------------------------------------------
 
 def receive_product():
