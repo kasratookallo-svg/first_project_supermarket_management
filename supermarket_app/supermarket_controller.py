@@ -26,7 +26,37 @@ from supermarket_model import *
 # Since Database Controller is a Class_Method, therefore requires date.
 class ProductController:
     @staticmethod
+    def is_valid(id, name, brand, quantity, price, date):
+        if not (type(id ) == int and id > 0):
+            raise NameError("Invalid product ID")
+
+        if not re.match(r"^[a-zA-Z0-9\s]{2,30}$", name):
+            return False, "Invalid name!"
+
+        if not re.match(r"^[a-zA-Z0-9\s]{2,30}$", brand):
+            return False, "Invalid brand!"
+
+        if not (type(quantity) == int and quantity > 0):
+            return False, "Invalid quantity!"
+
+        if not (type(price) == float and price > 0):
+            return False, "Invalid price!"
+
+
+        today = str(datetime.now().date())
+        if not date >= today:
+            return False, "Date must be Onward"
+
+        return True, ""
+
+    @staticmethod
     def save(id, name, brand, quantity ,price ,date):
+        valid, message = ProductController.is_valid(id, name, brand, quantity ,price ,date)
+        if not valid:
+            return False, message
+
+        if not valid:
+            return False, message
         try:
             product = Product(
             id,
@@ -44,6 +74,9 @@ class ProductController:
 
     @staticmethod
     def edit(id, name, brand, quantity, price, date):
+        valid, message = ProductController.is_valid(id, name, brand, quantity, price, date)
+        if not valid:
+            return False, message
         try:
             product = Product(
                 id,

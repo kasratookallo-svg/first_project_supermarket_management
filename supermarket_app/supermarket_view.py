@@ -43,8 +43,8 @@ def reset():
     date.set(str(today))
     status, product_list = ProductController.find_all()
 
-    #for item in table.get_children():
-     #   table.delete(item)
+    for item in table.get_children():
+        table.delete(item)
 
     for product in product_list:
         table.insert("", END, values=tuple(product))

@@ -37,44 +37,18 @@ class Product:
         self.price = price
         self.date = datetime.strptime(date, "%Y-%m-%d").date()
 
-    #                                                 Method_function
-    def is_valid(self):
-        if not (type(self.id ) == int and self.id > 0):
-            raise NameError("Invalid product ID")
-
-        if not re.match(r"^[a-zA-Z0-9\s]{3,30}$", self.name):
-            return False, "Invalid name!"
-
-        if not re.match(r"^[a-zA-Z0-9\s]{3,30}$", self.brand):
-            return False, "Invalid brand!"
-
-        if not (type(self.quantity) == int and self.quantity > 0):
-            return False, "Invalid quantity!"
-
-        if not (type(self.price) == float and self.price > 0):
-            return False, "Invalid price!"
-
-        try:
-            self.date = datetime.strptime(self.date, "%Y-%m-%d")
-        except ValueError:
-            return False, "Invalid Enroll Date (YYYY-MM-DD)"
-        today = datetime.now().date()
-        if not self.date() >= today:
-            return False, "Enroll Date cannot be in the past"
-
-        return True
-
     #                                               Representation
     def __repr__(self):
         return print(f"Each Product Info ====>> ID Num : {self.id:10} ---> Name :{self.name:10}, Brand :{self.brand:10}, Quantity :{self.quantity:5}, Price :{self.price:5}, Date :{self.date:5}")
 
     def to_tuple(self):
-        return tuple((self.id,
-                      self.name,
-                      self.brand,
-                      self.quantity,
-                      self.price,
-                      self.date
+        return tuple((
+            self.id,
+            self.name,
+            self.brand,
+            self.quantity,
+            self.price,
+            self.date
                       ))
 
 #--------------------------------------------------------------------------------------------------
@@ -101,12 +75,18 @@ def quantity_validator(quantity):
     if not type(quantity) == int and quantity > 0:
         raise ValueError("Quantity must be a positive number")
 
-def creat_products_and_validate(id ,name , brand , quantity , price,date):
+def date_validator(date):
+    today = str(datetime.today().date())
+    if not date >= today:
+        raise ValueError("Date must Onward.")
+
+def creat_products_and_validate(id ,name , brand , quantity , price, date):
     id_validator(id)
     name_validator(name)
     brand_validator(brand)
     quantity_validator(quantity)
     price_validator(price)
+    date_validator(date)
 
 
     product = {
