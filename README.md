@@ -22,6 +22,6 @@ This repository includes a Python Program for Supermarket_Products_Management wi
 
 = supermarket_model file : Product class defines the structure of a product record.
 - supermarket_controller file : Handles validation and connects the GUI to the database.
-- supermarket_dao file : EnrollDataAccess manages database operations (save, edit, remove, find).
+- supermarket_dao file : CurriculumDataAccess manages database operations (save, edit, remove, find).
 - supermarket_view file : Tkinter GUI for managing Product (add, edit, remove, view).
 
