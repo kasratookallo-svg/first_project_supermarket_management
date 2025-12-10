@@ -45,6 +45,8 @@ def reset():
     for item in table.get_children():
         table.delete(item)
 #------------------------------------------------------------------------------------
+    #                                   Calculating id automatically
+
     max_id = 0
     if status:
         for product in product_list:
