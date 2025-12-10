@@ -8,7 +8,7 @@ This repository includes a Python Program for Supermarket_Products_Management wi
 ( Database_related merits ) ---->> for future reference :
 
 - 'Submit to Database'
-- 'Edit databse'_ Based on Id
+- 'Edit databse'_ Based on ID
 - 'Remove from Databse'  
 
                                                         
