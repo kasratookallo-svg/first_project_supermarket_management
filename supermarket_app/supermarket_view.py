@@ -101,6 +101,7 @@ def receive_product():
         messagebox.showerror("Error", f"Something went wrong : {e}")
 #-----------------------------------------------------------------------------------------------
 #                                          Recalling Database functions
+# Submit Database
 def save_click():
     status, message = ProductController.save(
         id.get(),
@@ -115,7 +116,7 @@ def save_click():
         messagebox.showinfo("Product Save", message)
     else:
         messagebox.showerror("Product Save Error",message)
-
+# Edit Database
 def edit_click():
     status, message = ProductController.edit(
         id.get(),
@@ -131,6 +132,7 @@ def edit_click():
     else:
         messagebox.showerror("Product Edit Error",message)
 
+# Remove Database
 def remove_click():
     status, message = ProductController.remove(id.get())
     if status:
@@ -141,6 +143,7 @@ def remove_click():
 
 #-----------------------------------------------------------------------------------------------
 # total_price function attached to supermarket_module
+
 def total_price():
     try:
         total = calculate_total(product_list)
@@ -156,6 +159,7 @@ win.title("Welcome to Super Market _ List of Products")
 win.configure(bg="green")
 #-----------------------------------------------------------------------------------------------------------------------------------
 #                                      Description
+
 Label(win , text="Note : This window has 5 buttons which are paired in groups of two."
                  "\n'Add to List' and 'Total Price_List',"
                  "\n'Submit', 'Edit', and 'Remove from Database'."
