@@ -30,6 +30,7 @@ product_list = []
 
 class Product:
     def __init__(self, id, name, brand, quantity, price ,date):
+        # Class Property
         self.id = id
         self.name = name
         self.brand = brand
