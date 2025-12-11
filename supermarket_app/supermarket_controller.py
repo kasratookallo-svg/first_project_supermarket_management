@@ -25,6 +25,7 @@ from supermarket_model import *
 
 # Since Database Controller is a Class_Method.
 class ProductController:
+
     @staticmethod
     def is_valid(id, name, brand, quantity, price, date):
         if not (type(id ) == int and id > 0):
